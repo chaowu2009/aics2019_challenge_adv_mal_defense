@@ -1,5 +1,5 @@
 [DEFAULT]
-project_root = /home/projects/aics2019_challenge_adv_mal_defense/
+project_root = /Users/chaowu/Documents/project/RoboticKnight/malware_analysis/aics2019_challenge_adv_mal_defense
 
 [dataset]
 trainset = %(project_root)s/challenge/training_data.tgz

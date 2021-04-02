@@ -9,7 +9,10 @@ import sys
 import math
 
 from sklearn.model_selection import train_test_split
-import tensorflow as tf
+#import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 import numpy as np
 flags = tf.flags
 FLAGS = flags.FLAGS
@@ -235,14 +238,18 @@ def dump_joblib(data, path):
         mkdir(os.path.dirname(path))
 
     try:
-        from sklearn.externals import joblib
+        #from sklearn.externals import joblib
+        import joblib
+
         with open(path, 'wb') as wr:
             joblib.dump(data, wr)
     except IOError:
         raise IOError("Dump data failed.")
 
 def read_joblib(path):
-    from sklearn.externals import joblib
+    #from sklearn.externals import joblib
+    import joblib
+
     if os.path.isfile(path):
         with open(path, 'rb') as fr:
             return joblib.load(fr)

@@ -19,6 +19,9 @@ from dataset.input_preprocessing import normalize_data, random_over_sampling
 from utils import utils
 from config import config, logging
 
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 logger = logging.getLogger("basic_dnn")
 
 
@@ -146,7 +149,7 @@ class BasicDNN(Classifier):
 
         self.hidden_layers = self.hp_params.hidden_units
         self.output_dim = self.hp_params.output_dim
-        tf.set_random_seed(self.hp_params.random_seed)
+        tf.random.set_random_seed(self.hp_params.random_seed)
         if self.init_graph:
             self.model_graph(reuse=reuse)
 
